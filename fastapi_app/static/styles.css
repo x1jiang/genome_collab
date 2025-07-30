@@ -327,3 +327,52 @@ body {
 .stats-card small {
     color: rgba(255, 255, 255, 0.8);
 }
+
+
+/* Manhattan Plot Styles */
+
+.manhattan-plot-container {
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.manhattan-plot-container canvas {
+    border-radius: 6px;
+}
+
+
+/* Analysis Results Modal */
+
+#analysisResultsModal .modal-xl {
+    max-width: 95%;
+}
+
+#analysisResultsModal .modal-body {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+
+/* Chart Legend */
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    font-size: 0.875rem;
+}
+
+.chart-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.chart-legend-item i {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}

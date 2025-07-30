@@ -1019,7 +1019,24 @@ const analysisResults = {
             { chromosome: 15, position: 28365619, p_value: 2.1e-32, snp: 'rs16891982' },
             { chromosome: 15, position: 28365620, p_value: 5.4e-28, snp: 'rs1393350' },
             { chromosome: 15, position: 28365621, p_value: 8.9e-25, snp: 'rs12203592' },
-            { chromosome: 15, position: 28365622, p_value: 1.2e-22, snp: 'rs1800407' }
+            { chromosome: 15, position: 28365622, p_value: 1.2e-22, snp: 'rs1800407' },
+            { chromosome: 15, position: 28365623, p_value: 3.4e-20, snp: 'rs1800408' },
+            { chromosome: 15, position: 28365624, p_value: 7.8e-18, snp: 'rs1800409' },
+            { chromosome: 15, position: 28365625, p_value: 1.5e-15, snp: 'rs1800410' },
+            { chromosome: 15, position: 28365626, p_value: 2.9e-12, snp: 'rs1800411' },
+            { chromosome: 15, position: 28365627, p_value: 5.6e-10, snp: 'rs1800412' },
+            { chromosome: 15, position: 28365628, p_value: 1.1e-8, snp: 'rs1800413' },
+            { chromosome: 15, position: 28365629, p_value: 2.3e-7, snp: 'rs1800414' },
+            { chromosome: 15, position: 28365630, p_value: 4.7e-6, snp: 'rs1800415' },
+            { chromosome: 15, position: 28365631, p_value: 9.2e-5, snp: 'rs1800416' },
+            { chromosome: 15, position: 28365632, p_value: 0.001, snp: 'rs1800417' },
+            { chromosome: 15, position: 28365633, p_value: 0.01, snp: 'rs1800418' },
+            { chromosome: 15, position: 28365634, p_value: 0.05, snp: 'rs1800419' },
+            { chromosome: 15, position: 28365635, p_value: 0.1, snp: 'rs1800420' },
+            { chromosome: 15, position: 28365636, p_value: 0.3, snp: 'rs1800421' },
+            { chromosome: 15, position: 28365637, p_value: 0.5, snp: 'rs1800422' },
+            { chromosome: 15, position: 28365638, p_value: 0.7, snp: 'rs1800423' },
+            { chromosome: 15, position: 28365639, p_value: 0.9, snp: 'rs1800424' }
         ]
     },
     'height-gwas': {
@@ -1050,7 +1067,26 @@ const analysisResults = {
             { chromosome: 2, position: 123456790, p_value: 2.3e-35, snp: 'rs11191560' },
             { chromosome: 2, position: 123456791, p_value: 4.7e-32, snp: 'rs12149832' },
             { chromosome: 2, position: 123456792, p_value: 6.1e-29, snp: 'rs143384' },
-            { chromosome: 2, position: 123456793, p_value: 8.9e-26, snp: 'rs16891982' }
+            { chromosome: 2, position: 123456793, p_value: 8.9e-26, snp: 'rs16891982' },
+            { chromosome: 2, position: 123456794, p_value: 1.2e-23, snp: 'rs16891983' },
+            { chromosome: 2, position: 123456795, p_value: 3.4e-21, snp: 'rs16891984' },
+            { chromosome: 2, position: 123456796, p_value: 7.8e-19, snp: 'rs16891985' },
+            { chromosome: 2, position: 123456797, p_value: 1.5e-16, snp: 'rs16891986' },
+            { chromosome: 2, position: 123456798, p_value: 2.9e-13, snp: 'rs16891987' },
+            { chromosome: 2, position: 123456799, p_value: 5.6e-11, snp: 'rs16891988' },
+            { chromosome: 2, position: 123456800, p_value: 1.1e-9, snp: 'rs16891989' },
+            { chromosome: 2, position: 123456801, p_value: 2.3e-8, snp: 'rs16891990' },
+            { chromosome: 2, position: 123456802, p_value: 4.7e-7, snp: 'rs16891991' },
+            { chromosome: 2, position: 123456803, p_value: 9.2e-6, snp: 'rs16891992' },
+            { chromosome: 2, position: 123456804, p_value: 0.0001, snp: 'rs16891993' },
+            { chromosome: 2, position: 123456805, p_value: 0.001, snp: 'rs16891994' },
+            { chromosome: 2, position: 123456806, p_value: 0.01, snp: 'rs16891995' },
+            { chromosome: 2, position: 123456807, p_value: 0.05, snp: 'rs16891996' },
+            { chromosome: 2, position: 123456808, p_value: 0.1, snp: 'rs16891997' },
+            { chromosome: 2, position: 123456809, p_value: 0.3, snp: 'rs16891998' },
+            { chromosome: 2, position: 123456810, p_value: 0.5, snp: 'rs16891999' },
+            { chromosome: 2, position: 123456811, p_value: 0.7, snp: 'rs16892000' },
+            { chromosome: 2, position: 123456812, p_value: 0.9, snp: 'rs16892001' }
         ]
     },
     'diabetes-gwas': {
@@ -1081,7 +1117,27 @@ const analysisResults = {
             { chromosome: 11, position: 987654322, p_value: 5.6e-38, snp: 'rs12255372' },
             { chromosome: 11, position: 987654323, p_value: 8.9e-35, snp: 'rs7901695' },
             { chromosome: 11, position: 987654324, p_value: 1.2e-32, snp: 'rs4506565' },
-            { chromosome: 11, position: 987654325, p_value: 3.4e-29, snp: 'rs7578597' }
+            { chromosome: 11, position: 987654325, p_value: 3.4e-29, snp: 'rs7578597' },
+            { chromosome: 11, position: 987654326, p_value: 7.8e-26, snp: 'rs7578598' },
+            { chromosome: 11, position: 987654327, p_value: 1.5e-23, snp: 'rs7578599' },
+            { chromosome: 11, position: 987654328, p_value: 2.9e-20, snp: 'rs7578600' },
+            { chromosome: 11, position: 987654329, p_value: 5.6e-18, snp: 'rs7578601' },
+            { chromosome: 11, position: 987654330, p_value: 1.1e-15, snp: 'rs7578602' },
+            { chromosome: 11, position: 987654331, p_value: 2.3e-13, snp: 'rs7578603' },
+            { chromosome: 11, position: 987654332, p_value: 4.7e-11, snp: 'rs7578604' },
+            { chromosome: 11, position: 987654333, p_value: 9.2e-10, snp: 'rs7578605' },
+            { chromosome: 11, position: 987654334, p_value: 1.8e-8, snp: 'rs7578606' },
+            { chromosome: 11, position: 987654335, p_value: 3.6e-7, snp: 'rs7578607' },
+            { chromosome: 11, position: 987654336, p_value: 7.2e-6, snp: 'rs7578608' },
+            { chromosome: 11, position: 987654337, p_value: 0.0001, snp: 'rs7578609' },
+            { chromosome: 11, position: 987654338, p_value: 0.001, snp: 'rs7578610' },
+            { chromosome: 11, position: 987654339, p_value: 0.01, snp: 'rs7578611' },
+            { chromosome: 11, position: 987654340, p_value: 0.05, snp: 'rs7578612' },
+            { chromosome: 11, position: 987654341, p_value: 0.1, snp: 'rs7578613' },
+            { chromosome: 11, position: 987654342, p_value: 0.3, snp: 'rs7578614' },
+            { chromosome: 11, position: 987654343, p_value: 0.5, snp: 'rs7578615' },
+            { chromosome: 11, position: 987654344, p_value: 0.7, snp: 'rs7578616' },
+            { chromosome: 11, position: 987654345, p_value: 0.9, snp: 'rs7578617' }
         ]
     }
 };
@@ -1221,19 +1277,24 @@ function showAnalysisResults(analysisId) {
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h6><i class="fas fa-chart-line me-2"></i>Manhattan Plot Data</h6>
+                        <h6><i class="fas fa-chart-line me-2"></i>Manhattan Plot</h6>
                     </div>
                     <div class="card-body">
-                        <div class="text-center">
-                            <i class="fas fa-chart-bar fa-3x text-muted mb-3"></i>
-                            <p class="text-muted">Manhattan plot visualization would be displayed here</p>
-                            <small class="text-muted">Showing ${analysis.manhattan_data.length} significant SNPs across chromosome ${analysis.summary.chromosome}</small>
+                        <div class="manhattan-plot-container" style="position: relative; height: 300px;">
+                            <canvas id="manhattanPlot-${analysisId}"></canvas>
                         </div>
                         <div class="mt-3">
-                            <div class="progress mb-2">
-                                <div class="progress-bar bg-success" style="width: 100%"></div>
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <small class="text-danger"><i class="fas fa-circle me-1"></i>Genome-wide significant</small>
+                                </div>
+                                <div class="col-4">
+                                    <small class="text-warning"><i class="fas fa-circle me-1"></i>Suggestive</small>
+                                </div>
+                                <div class="col-4">
+                                    <small class="text-muted"><i class="fas fa-circle me-1"></i>Not significant</small>
+                                </div>
                             </div>
-                            <small class="text-muted">Plot generation: Complete</small>
                         </div>
                     </div>
                 </div>
@@ -1268,10 +1329,170 @@ function showAnalysisResults(analysisId) {
         </div>
     `;
     
+    // Store current analysis ID for download function
+    document.getElementById('analysisResultsModal').dataset.currentAnalysis = analysisId;
+    
     // Show the modal
     const modal = new bootstrap.Modal(document.getElementById('analysisResultsModal'));
     modal.show();
+    
+    // Create Manhattan plot after modal is shown
+    setTimeout(() => {
+        createManhattanPlot(analysisId, analysis.manhattan_data);
+    }, 100);
 }
 
-// Make function globally available
+// Function to create Manhattan plot
+function createManhattanPlot(analysisId, data) {
+    const canvas = document.getElementById(`manhattanPlot-${analysisId}`);
+    if (!canvas) {
+        console.error('Canvas not found for Manhattan plot');
+        return;
+    }
+    
+    // Convert p-values to -log10 scale
+    const plotData = data.map(point => ({
+        x: point.position,
+        y: -Math.log10(point.p_value),
+        snp: point.snp,
+        p_value: point.p_value
+    }));
+    
+    // Define significance thresholds
+    const genomeWideThreshold = -Math.log10(5e-8);
+    const suggestiveThreshold = -Math.log10(1e-6);
+    
+    // Color points based on significance
+    const colors = plotData.map(point => {
+        if (point.y >= genomeWideThreshold) return 'rgba(255, 0, 0, 0.8)'; // Red for genome-wide significant
+        if (point.y >= suggestiveThreshold) return 'rgba(255, 165, 0, 0.8)'; // Orange for suggestive
+        return 'rgba(128, 128, 128, 0.6)'; // Gray for not significant
+    });
+    
+    // Create Chart.js configuration
+    const ctx = canvas.getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'SNPs',
+                data: plotData,
+                backgroundColor: colors,
+                borderColor: colors,
+                borderWidth: 1,
+                pointRadius: 4,
+                pointHoverRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Manhattan Plot - GWAS Results',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const point = context.raw;
+                            return [
+                                `SNP: ${point.snp}`,
+                                `Position: ${point.x.toLocaleString()}`,
+                                `P-value: ${point.p_value.toExponential(3)}`,
+                                `-log10(P): ${point.y.toFixed(2)}`
+                            ];
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Genomic Position'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value.toLocaleString();
+                        }
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: '-log10(P-value)'
+                    },
+                    beginAtZero: true
+                }
+            },
+            annotation: {
+                annotations: {
+                    genomeWideLine: {
+                        type: 'line',
+                        yMin: genomeWideThreshold,
+                        yMax: genomeWideThreshold,
+                        borderColor: 'red',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        label: {
+                            content: 'Genome-wide significance (5e-8)',
+                            position: 'start'
+                        }
+                    },
+                    suggestiveLine: {
+                        type: 'line',
+                        yMin: suggestiveThreshold,
+                        yMax: suggestiveThreshold,
+                        borderColor: 'orange',
+                        borderWidth: 1,
+                        borderDash: [3, 3],
+                        label: {
+                            content: 'Suggestive significance (1e-6)',
+                            position: 'start'
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Function to download analysis results
+function downloadResults() {
+    const analysisId = document.querySelector('#analysisResultsModal').dataset.currentAnalysis;
+    const analysis = analysisResults[analysisId];
+    
+    if (!analysis) {
+        alert('No analysis data available for download');
+        return;
+    }
+    
+    // Create CSV content
+    let csvContent = 'SNP,Chromosome,Position,P-Value,Effect_Size\n';
+    analysis.top_hits.forEach(hit => {
+        csvContent += `${hit.snp},${hit.chromosome},${hit.position},${hit.p_value},${hit.effect_size}\n`;
+    });
+    
+    // Create and download file
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${analysisId}_results.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+}
+
+// Make functions globally available
 window.showAnalysisResults = showAnalysisResults;
+window.downloadResults = downloadResults;
