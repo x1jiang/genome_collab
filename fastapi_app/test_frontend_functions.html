@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Function Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Frontend Function Test</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Navigation Tests</h3>
+                <button class="btn btn-primary" onclick="testNavigation()">Test Navigation</button>
+                <button class="btn btn-success" onclick="testSectionDisplay()">Test Section Display</button>
+                <button class="btn btn-info" onclick="testAuthUI()">Test Auth UI</button>
+            </div>
+
+            <div class="col-md-6">
+                <h3>API Tests</h3>
+                <button class="btn btn-primary" onclick="testLogin()">Test Login</button>
+                <button class="btn btn-success" onclick="testProfile()">Test Profile</button>
+                <button class="btn btn-warning" onclick="testCollaborations()">Test Collaborations</button>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3>Test Results</h3>
+                <div id="test-results" class="bg-light p-3 border rounded"></div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3>Console Log</h3>
+                <div id="console-log" class="bg-dark text-light p-3" style="height: 300px; overflow-y: auto; font-family: monospace;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Override console.log to show in our debug area
+        const originalLog = console.log;
+        const originalError = console.error;
+
+        function addToLog(message, type = 'log') {
+            const logDiv = document.getElementById('console-log');
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? 'text-danger' : 'text-light';
+            logDiv.innerHTML += `<div class="${color}">[${timestamp}] ${message}</div>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToLog(args.join(' '));
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToLog(args.join(' '), 'error');
+        };
+
+        function addTestResult(test, result, details = '') {
+            const resultsDiv = document.getElementById('test-results');
+            const status = result ? '✅ PASS' : '❌ FAIL';
+            const color = result ? 'text-success' : 'text-danger';
+            resultsDiv.innerHTML += `<div class="${color}"><strong>${test}:</strong> ${status} ${details}</div>`;
+        }
+
+        function testNavigation() {
+            console.log('Testing navigation functionality...');
+
+            // Test showSection function
+            try {
+                // Create test sections
+                const testSection = document.createElement('div');
+                testSection.id = 'test-section';
+                testSection.className = 'content-section';
+                testSection.style.display = 'none';
+                testSection.innerHTML = '<h4>Test Section</h4><p>This is a test section.</p>';
+                document.body.appendChild(testSection);
+
+                // Test showSection
+                if (typeof showSection === 'function') {
+                    showSection('test');
+                    const isVisible = testSection.style.display === 'block';
+                    addTestResult('Navigation - showSection', isVisible);
+                    console.log('showSection function works:', isVisible);
+                } else {
+                    addTestResult('Navigation - showSection', false, 'Function not found');
+                    console.error('showSection function not found');
+                }
+
+                // Cleanup
+                document.body.removeChild(testSection);
+            } catch (error) {
+                addTestResult('Navigation - showSection', false, error.message);
+                console.error('Navigation test error:', error);
+            }
+        }
+
+        function testSectionDisplay() {
+            console.log('Testing section display...');
+
+            try {
+                // Test if sections exist
+                const sections = ['home', 'login', 'register', 'dashboard', 'upload', 'collaborations', 'analysis', 'profile'];
+                let foundSections = 0;
+
+                sections.forEach(section => {
+                    const element = document.getElementById(`${section}-section`);
+                    if (element) {
+                        foundSections++;
+                        console.log(`Section found: ${section}-section`);
+                    } else {
+                        console.log(`Section missing: ${section}-section`);
+                    }
+                });
+
+                const result = foundSections > 0;
+                addTestResult('Section Display', result, `${foundSections}/${sections.length} sections found`);
+                console.log(`Section display test: ${foundSections}/${sections.length} sections found`);
+            } catch (error) {
+                addTestResult('Section Display', false, error.message);
+                console.error('Section display test error:', error);
+            }
+        }
+
+        function testAuthUI() {
+            console.log('Testing authentication UI...');
+
+            try {
+                // Test if auth-related elements exist
+                const authElements = [
+                    'nav-login-section',
+                    'nav-register-section',
+                    'logout-section',
+                    'unauthenticated-only'
+                ];
+
+                let foundElements = 0;
+                authElements.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        foundElements++;
+                        console.log(`Auth element found: ${id}`);
+                    } else {
+                        console.log(`Auth element missing: ${id}`);
+                    }
+                });
+
+                const result = foundElements > 0;
+                addTestResult('Auth UI', result, `${foundElements}/${authElements.length} elements found`);
+                console.log(`Auth UI test: ${foundElements}/${authElements.length} elements found`);
+            } catch (error) {
+                addTestResult('Auth UI', false, error.message);
+                console.error('Auth UI test error:', error);
+            }
+        }
+
+        async function testLogin() {
+            console.log('Testing login API...');
+
+            try {
+                const response = await fetch('http://localhost:8000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'demo@genome.com',
+                        password: 'demo123'
+                    })
+                });
+
+                const data = await response.json();
+                const success = response.ok && data.access_token;
+
+                addTestResult('Login API', success, success ? 'Token received' : `Status: ${response.status}`);
+                console.log('Login API test:', success ? 'SUCCESS' : 'FAILED');
+                console.log('Response:', data);
+
+                return success ? data.access_token : null;
+            } catch (error) {
+                addTestResult('Login API', false, error.message);
+                console.error('Login API test error:', error);
+                return null;
+            }
+        }
+
+        async function testProfile() {
+            console.log('Testing profile API...');
+
+            try {
+                // First login to get token
+                const token = await testLogin();
+                if (!token) {
+                    addTestResult('Profile API', false, 'No token available');
+                    return;
+                }
+
+                const response = await fetch('http://localhost:8000/api/profile', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                const data = await response.json();
+                const success = response.ok && data.email;
+
+                addTestResult('Profile API', success, success ? `User: ${data.first_name} ${data.last_name}` : `Status: ${response.status}`);
+                console.log('Profile API test:', success ? 'SUCCESS' : 'FAILED');
+                console.log('Profile data:', data);
+
+            } catch (error) {
+                addTestResult('Profile API', false, error.message);
+                console.error('Profile API test error:', error);
+            }
+        }
+
+        async function testCollaborations() {
+            console.log('Testing collaborations API...');
+
+            try {
+                // First login to get token
+                const token = await testLogin();
+                if (!token) {
+                    addTestResult('Collaborations API', false, 'No token available');
+                    return;
+                }
+
+                const response = await fetch('http://localhost:8000/api/user/1/collaborations', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                const data = await response.json();
+                const success = response.ok;
+
+                addTestResult('Collaborations API', success, success ? `${data.length} collaborations found` : `Status: ${response.status}`);
+                console.log('Collaborations API test:', success ? 'SUCCESS' : 'FAILED');
+                console.log('Collaborations data:', data);
+
+            } catch (error) {
+                addTestResult('Collaborations API', false, error.message);
+                console.error('Collaborations API test error:', error);
+            }
+        }
+
+        console.log('Frontend test page loaded');
+    </script>
+</body>
+
+</html>

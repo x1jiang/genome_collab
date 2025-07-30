@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Debug</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Login Debug Test</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Test Login</h3>
+                <form id="login-test">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" value="demo@genome.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" value="demo123">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Test Login</button>
+                </form>
+                <div id="login-result" class="mt-3"></div>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Test Dashboard Display</h3>
+                <button class="btn btn-success" onclick="testDashboard()">Show Dashboard</button>
+                <button class="btn btn-info" onclick="testHome()">Show Home</button>
+                <button class="btn btn-warning" onclick="testAuthUI()">Test Auth UI</button>
+                <div id="ui-result" class="mt-3"></div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3>Console Log</h3>
+                <div id="console-log" class="bg-dark text-light p-3" style="height: 300px; overflow-y: auto; font-family: monospace;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Override console.log to show in our debug area
+        const originalLog = console.log;
+        const originalError = console.error;
+
+        function addToLog(message, type = 'log') {
+            const logDiv = document.getElementById('console-log');
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? 'text-danger' : 'text-light';
+            logDiv.innerHTML += `<div class="${color}">[${timestamp}] ${message}</div>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToLog(args.join(' '));
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToLog(args.join(' '), 'error');
+        };
+
+        // Test login
+        document.getElementById('login-test').addEventListener('submit', async(e) => {
+            e.preventDefault();
+            console.log('Testing login...');
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:8000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                });
+
+                const data = await response.json();
+                console.log('Login response:', data);
+
+                if (response.ok) {
+                    console.log('Login successful, testing dashboard...');
+                    // Test the dashboard functions
+                    testDashboard();
+                    testAuthUI();
+                }
+
+                document.getElementById('login-result').innerHTML = `
+                    <div class="alert alert-${response.ok ? 'success' : 'danger'}">
+                        <strong>Status:</strong> ${response.status}<br>
+                        <strong>Response:</strong> ${JSON.stringify(data, null, 2)}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Login error:', error);
+                document.getElementById('login-result').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        });
+
+        // Test dashboard display
+        function testDashboard() {
+            console.log('Testing dashboard display...');
+            try {
+                const dashboardSection = document.getElementById('dashboard-section');
+                if (dashboardSection) {
+                    console.log('Dashboard section found');
+                    dashboardSection.style.display = 'block';
+                    console.log('Dashboard should now be visible');
+                } else {
+                    console.error('Dashboard section not found');
+                }
+            } catch (error) {
+                console.error('Dashboard test error:', error);
+            }
+        }
+
+        // Test home display
+        function testHome() {
+            console.log('Testing home display...');
+            try {
+                const homeSection = document.getElementById('home-section');
+                if (homeSection) {
+                    console.log('Home section found');
+                    homeSection.style.display = 'block';
+                    console.log('Home should now be visible');
+                } else {
+                    console.error('Home section not found');
+                }
+            } catch (error) {
+                console.error('Home test error:', error);
+            }
+        }
+
+        // Test auth UI
+        function testAuthUI() {
+            console.log('Testing auth UI...');
+            try {
+                const authRequired = document.querySelectorAll('#auth-required');
+                const unauthenticatedOnly = document.getElementById('unauthenticated-only');
+
+                console.log('Auth required elements:', authRequired.length);
+                console.log('Unauthenticated only element:', unauthenticatedOnly);
+
+                authRequired.forEach(el => {
+                    el.style.display = 'block';
+                    console.log('Showing auth required element');
+                });
+
+                if (unauthenticatedOnly) {
+                    unauthenticatedOnly.style.display = 'none';
+                    console.log('Hiding unauthenticated only element');
+                }
+            } catch (error) {
+                console.error('Auth UI test error:', error);
+            }
+        }
+
+        console.log('Debug page loaded');
+    </script>
+</body>
+
+</html>

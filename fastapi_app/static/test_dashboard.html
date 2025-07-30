@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1>Dashboard Test</h1>
+
+        <button class="btn btn-primary" onclick="showDashboard()">Show Dashboard</button>
+        <button class="btn btn-secondary" onclick="showHome()">Show Home</button>
+
+        <!-- Home Section -->
+        <div id="home-section" class="content-section">
+            <h2>Home Section</h2>
+            <p>This is the home section content.</p>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="content-section" style="display: none;">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="text-center mb-5">
+                        <h1 class="display-4 mb-3">Welcome back!</h1>
+                        <p class="lead">Ready to collaborate on genetic research? Choose an option below to get started.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-upload fa-3x text-primary mb-3"></i>
+                                    <h5 class="card-title">Upload Data</h5>
+                                    <p class="card-text">Upload your genetic data for analysis and collaboration.</p>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-upload me-2"></i>Upload Data
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                                    <h5 class="card-title">Collaborations</h5>
+                                    <p class="card-text">Manage your research collaborations and invite team members.</p>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-users me-2"></i>View Collaborations
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                                    <h5 class="card-title">Analysis</h5>
+                                    <p class="card-text">Perform GWAS and statistical analysis on your genetic data.</p>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-chart-line me-2"></i>Start Analysis
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionName) {
+            console.log('showSection called with:', sectionName);
+
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the requested section
+            const targetSection = document.getElementById(`${sectionName}-section`);
+            console.log('Looking for section:', `${sectionName}-section`);
+            console.log('Target section found:', targetSection);
+
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                console.log('Section displayed:', sectionName);
+            } else {
+                console.error('Section not found:', sectionName);
+            }
+        }
+
+        function showDashboard() {
+            console.log('showDashboard called');
+            showSection('dashboard');
+        }
+
+        function showHome() {
+            console.log('showHome called');
+            showSection('home');
+        }
+
+        console.log('Test page loaded');
+    </script>
+</body>
+
+</html>
