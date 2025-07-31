@@ -56,6 +56,60 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 async def startup_event():
     create_tables()
     logger.info("Database tables created successfully!")
+    
+    # Create demo users if they don't exist
+    db = next(get_db())
+    try:
+        from werkzeug.security import generate_password_hash
+        
+        demo_users = [
+            {
+                "email": "demo@genome.com",
+                "password": "demo123",
+                "first_name": "Demo",
+                "last_name": "User",
+                "institution": "Demo Institution",
+                "role": "researcher"
+            },
+            {
+                "email": "researcher@genome.com",
+                "password": "research123",
+                "first_name": "Research",
+                "last_name": "User",
+                "institution": "Research Institution",
+                "role": "researcher"
+            },
+            {
+                "email": "admin@genome.com",
+                "password": "admin123",
+                "first_name": "Admin",
+                "last_name": "User",
+                "institution": "Admin Institution",
+                "role": "admin"
+            }
+        ]
+        
+        for user_data in demo_users:
+            existing_user = db.query(User).filter(User.email == user_data["email"]).first()
+            if not existing_user:
+                hashed_password = generate_password_hash(user_data["password"])
+                db_user = User(
+                    email=user_data["email"],
+                    password_hash=hashed_password,
+                    first_name=user_data["first_name"],
+                    last_name=user_data["last_name"],
+                    institution=user_data["institution"],
+                    role=user_data["role"]
+                )
+                db.add(db_user)
+                logger.info(f"Created demo user: {user_data['email']}")
+        
+        db.commit()
+        logger.info("Demo users setup completed!")
+    except Exception as e:
+        logger.error(f"Error creating demo users: {e}")
+    finally:
+        db.close()
 
 # Blacklisted tokens (in production, use Redis)
 blacklisted_tokens = set()

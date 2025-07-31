@@ -3,7 +3,7 @@
 // Global variables
 let currentUser = null;
 let authToken = localStorage.getItem('token');
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = window.location.origin + '/api';
 
 // Add user collaboration data structure
 let userCollaborations = [];
